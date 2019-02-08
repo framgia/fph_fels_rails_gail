@@ -19,13 +19,14 @@
                         <hr>
 
                         <div class="form-label-group">
-                            <%= f.password_field :password, class: "form-control", required: true ,placeholder: "Password" , minlength: 6 %>
+                            <%= f.password_field :password, class: "form-control", id: "password", required: true , minlength: 6 %>
                             <%= f.label :password %>
                         </div>
                         
                         <div class="form-label-group">
-                            <%= f.password_field :password_confirmation, class: "form-control", required: true ,placeholder: "Password Confirmation" ,minlength: 6%>
+                            <%= f.password_field :password_confirmation, class: "form-control", id: "confirm_password", required: true ,minlength: 6 %>
                             <%= f.label :password_confirmation %>
+                            <span id='message'>hi</span>
                         </div>
 
                         <%= f.submit "Create Account", class: "btn btn-lg btn-primary btn-block text-uppercase" %>      
