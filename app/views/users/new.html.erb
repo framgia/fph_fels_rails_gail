@@ -1,2 +1,38 @@
 <%= provide(:title,"Sign Up") %>
-<h1> Wanna sign up?</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="card card-signin flex-row my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Sign Up</h5>
+                    <%= form_for(@user, html: {class: "form-signin"}) do |f|%>
+                        <div class="form-label-group">
+                            <%= f.text_field :name, class: "form-control", autofocus: true, required: true,placeholder: "Name" %>
+                            <%= f.label :name %>
+                        </div>
+                        <div class="form-label-group">
+                            <%= f.email_field :email, class: "form-control", required: true ,placeholder: "Email"%>
+                            <%= f.label :email %>
+                        </div>
+                        
+                        <hr>
+
+                        <div class="form-label-group">
+                            <%= f.password_field :password, class: "form-control", required: true ,placeholder: "Password" %>
+                            <%= f.label :password %>
+                        </div>
+                        
+                        <div class="form-label-group">
+                            <%= f.password_field :password_confirmation, class: "form-control", required: true ,placeholder: "Password" %>
+                            <%= f.label :password_confirmation %>
+                        </div>
+
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign Up</button>             
+                        <hr class="my-4">
+                        <center><%= link_to "Have an Account?", "#" ,class: "text-center" %><center>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

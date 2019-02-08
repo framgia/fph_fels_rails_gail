@@ -12,6 +12,8 @@ gem 'rails', '~> 5.1.6', '>= 5.1.6.1'
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+#password crypting
+gem 'bcrypt','3.1.12'
 #bootstrap
 gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
