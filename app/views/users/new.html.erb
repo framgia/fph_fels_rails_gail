@@ -6,6 +6,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Sign Up</h5>
                     <%= form_for(@user, url: signup_path, html: {class: "form-signin"}) do |f|%>
+                        <%= render 'shared/error_messages' %>
                         <div class="form-label-group">
                             <%= f.text_field :name, class: "form-control", autofocus: true, required: true,placeholder: "Name" %>
                             <%= f.label :name %>
@@ -26,7 +27,7 @@
                         <div class="form-label-group">
                             <%= f.password_field :password_confirmation, class: "form-control", id: "confirm_password", required: true ,minlength: 6 %>
                             <%= f.label :password_confirmation %>
-                            <span id='message'>hi</span>
+                            <span id='message'></span>
                         </div>
 
                         <%= f.submit "Create Account", class: "btn btn-lg btn-primary btn-block text-uppercase" %>      
