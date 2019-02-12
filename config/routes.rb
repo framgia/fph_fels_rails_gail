@@ -3,16 +3,19 @@ Rails.application.routes.draw do
   
   #navbar pages
  	get '/login', to: 'sessions#new'
-  get '/category', to: 'categories#index'
+  get '/admin/category', to: 'admin/categories#index'
   get '/signup', to: 'users#new'
-  get '/category', to: 'categories#new'  
+  get '/admin/category', to: 'admin/categories#new'  
 
   post '/signup', to: 'users#create'
   post '/login',   to: 'sessions#create'
-  post '/category', to: 'categories#create'
+  post '/admin/category', to: 'admin/categories#create'
 
   delete '/logout',  to: 'sessions#destroy'
   
+  namespace :admin do
+    resources :categories
+  end
   resources :categories
   resources :users
 end

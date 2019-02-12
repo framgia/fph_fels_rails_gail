@@ -12,8 +12,8 @@
 			  	<li class="nav-item dropdown">
 					<%=  link_to "Categories","#", class: "nav-link dropdown-toggle", data:{ toggle: "dropdown"}, aria: {haspopup: "true", expanded: "false"} %>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<%= link_to "List Category", category_path, class: "dropdown-item" %>
-						<%= link_to "Add Category", new_category_path, class: "dropdown-item" %>
+						<%= link_to "List Category", admin_category_path, class: "dropdown-item" %>
+						<%= link_to "Add Category", new_admin_category_path, class: "dropdown-item" %>
 					</div>
 				</li>   
 				<% if logged_in? %>
