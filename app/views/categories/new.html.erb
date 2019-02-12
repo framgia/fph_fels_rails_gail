@@ -5,14 +5,14 @@
             <div class="card card-signin flex-row my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">New Category</h5>
-                    <%= form_for(@category, url: addcategory_path, html: {class: "form-signin"}) do |f|%>
+                    <%= form_for(@category, url: category_path, html: {class: "form-signin"}) do |f|%>
                         <div class="form-label-group">
                             <%= f.text_field :title, class: "form-control", required: true, placeholder: "Title" %>
                             <%= f.label :title %>
                         </div>
     
                         <div class="form-label-group">
-                            <%= f.text_area :description, class: "form-control", required: true , id:"descriptionBox" ,placeholder:"Description"%>
+                            <%= f.text_area :description, class: "form-control", required: true , id:"descriptionBox" ,placeholder:"Description", minlength: 50 %>
                         </div>
                         
                         <%= f.submit "Add Category", class: "btn btn-lg btn-primary btn-block text-uppercase" %>    

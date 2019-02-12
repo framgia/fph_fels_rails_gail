@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
     def create
         @category = Category.new(categ_params)
         if @category.save
-            redirect_to category_path
+            redirect_to category_url
         else
           render 'new'
         end
