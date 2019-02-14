@@ -22,7 +22,7 @@
                                 <td class="col-3">
                                     <button class="btn btn-primary btn-sm">Add Word</button>
                                     <%= link_to "Edit", edit_admin_category_path(category), class: "btn btn-outline-warning btn-sm" %>
-                                    <%= link_to "Delete", admin_category_path(category), method: :delete,  class:"btn btn-outline-danger btn-sm", data: { confirm: "You sure?" }  %>
+                                    <%= link_to "Delete", [:admin, category], method: :delete,  class:"btn btn-outline-danger btn-sm", data: { confirm: "You sure?" }  %>
                                 </td>
                             </tr>
                         <% end %>
