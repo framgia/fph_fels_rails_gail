@@ -17,6 +17,11 @@ gem 'bcrypt','3.1.12'
 #bootstrap
 gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
+#pagination
+gem 'will_paginate','3.1.6'
+gem 'will_paginate-bootstrap4'
+#adding fake data
+gem 'faker', '1.7.3'
 #bootstrap related?
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Use SCSS for stylesheets

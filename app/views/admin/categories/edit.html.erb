@@ -1,11 +1,11 @@
-<%= provide(:title, "Add Category") %>
+<%= provide(:title, "Edit Category") %>
 <div class="container">
     <div class="row">
         <div class="col-lg-10 col-xl-9 mx-auto">
             <div class="card card-signin flex-row my-5">
                 <div class="card-body">
-                    <h5 class="card-title text-center">New Category</h5>
-                    <%= form_for(@category, html: {class: "form-signin"}, url: admin_categories_path) do |f|%>
+                    <h5 class="card-title text-center">Edit Category</h5>
+                    <%= form_for([:admin,@category],html: {class: "form-signin"}) do |f|%>
                         <div class="form-label-group">
                             <%= f.text_field :title, class: "form-control", required: true, placeholder: "Title" %>
                             <%= f.label :title %>
@@ -15,7 +15,7 @@
                             <%= f.text_area :description, class: "form-control", required: true , id:"descriptionBox" ,placeholder:"Description", minlength: 50,maxlength: 150 %>
                         </div>
                         
-                        <%= f.submit "Add Category", class: "btn btn-lg btn-primary btn-block text-uppercase" %>    
+                        <%= f.submit "Update Category", class: "btn btn-lg btn-primary btn-block text-uppercase" %>    
                     <% end %>  
                 </div>
             </div>
