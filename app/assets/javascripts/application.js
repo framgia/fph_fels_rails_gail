@@ -24,4 +24,16 @@ $( document ).ready(function() {
         }else 
             $('#message').html('Not Matching').css('color', 'red');
     });
+
+    $('.choice-list').on('change', function() {
+        if(this.checked){
+            $('.choice-list').not(this).prop('checked', false);  
+            $('#canSubmit').not(this).prop('disabled', false);                        
+        }else{
+            $('#canSubmit').not(this).prop('disabled', true); 
+        }
+        
+       
+    });
+
 });
