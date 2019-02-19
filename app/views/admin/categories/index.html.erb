@@ -19,10 +19,10 @@
                             <tr class="d-flex">
                                 <td class="col-2"><%= category.title %></td>
                                 <td class="col-6"><p id="description"><%= category.description %></p></td>
-                                <th class="col-1"><center><%= category.words.count %></center></th>
+                                <th class="col-1"><center> <%= link_to "#{category.words.count} View", admin_category_words_path(category), class: "btn btn-info btn-sm" %></center></th>
                                 <td class="col-3">
                                     <center>
-                                        <%= link_to "Add Word", admin_category_words_path(category), class: "btn btn-primary btn-sm" %>
+                                        <%= link_to "Add Word", new_admin_category_word_path(category), class: "btn btn-primary btn-sm" %>
                                         <%= link_to "Edit", edit_admin_category_path(category), class: "btn btn-outline-warning btn-sm" %>
                                         <%= link_to "Delete", [:admin, category], method: :delete,  class:"btn btn-outline-danger btn-sm", data: { confirm: "You sure?" }  %>
                                     </center>

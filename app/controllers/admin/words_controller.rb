@@ -1,9 +1,8 @@
 class Admin::WordsController < ApplicationController
     
-
     def index 
         @category = Category.find_by_id(params[:category_id])
-        @words = @category.words.all 
+        @words = @category.words
     end
 
     def new
@@ -14,13 +13,13 @@ class Admin::WordsController < ApplicationController
     end
 
     def create 
-        @word = Word.new(word_params)
-        
+        @category = Category.find(params[:category_id])
+        @word = @category.words.new(word_params)
         if @word.save
-            flash.now[:success] = "HUHUHUHUHU :D"
+            flash.now[:success] = "You added a new word!"
             redirect_to admin_category_words_url(params[:category_id])
         else
-            flash.now[:danger] = "NANI:?!"
+            flash.now[:danger] = "You added a new word!"
             render 'new'
         end
     end
@@ -32,7 +31,6 @@ class Admin::WordsController < ApplicationController
 
     def update
         @word = Word.find(params[:id])
-        @choices = @word.choices.all
         if @word.update_attributes(word_params) 
           flash[:success] = "Word #{@word.id} has been updated!" 
           redirect_to admin_category_words_url(@word.category_id)
@@ -49,7 +47,7 @@ class Admin::WordsController < ApplicationController
 
     private 
     def word_params
-        params.require(:word).permit(:content,:category_id, choices_attributes:[:id,:content, :correct])
+        params.require(:word).permit(:content, choices_attributes:[:id,:content, :correct])
     end 
 
     

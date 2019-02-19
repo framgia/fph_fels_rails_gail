@@ -5,16 +5,13 @@
             <div class="card card-signin flex-row my-5">
                 <div class="card-body">
                     <h5 class="card-title"> Admin | Add Word <span class="float-right"><%= link_to "Back", admin_category_words_path(@word.category_id),  class:"btn btn-defualt" %></span></h5>
+                    <%= render 'shared/error_word' %>
                     <div class="d-flex justify-content-center">
                         <%= form_for(@word, html: {class: "form-signin"},url: admin_category_words_path) do |f|%>
                             <h5>Word</h5>
                             <div class="form-group">
                                 <div class="form-label-group">
                                     <%= f.text_field :content, class: "form-control", required: true, placeholder: "Word" %>
-                                </div>
-                                
-                                <div class="form-label-group">
-                                    <%= f.hidden_field :category_id, value: "#{@word.category_id}" %>
                                 </div>
                             </div>
                             
@@ -40,3 +37,13 @@
         </div>
     </div>
 </div>
+<script>
+    $('.choice-list').on('change', function() {
+        if(this.checked){
+            $('.choice-list').not(this).prop('checked', false);  
+            $('#canSubmit').not(this).prop('disabled', false);                        
+        }else{
+            $('#canSubmit').not(this).prop('disabled', true); 
+        }
+    });
+</script>
