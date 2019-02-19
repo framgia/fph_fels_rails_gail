@@ -13,7 +13,7 @@ class Word < ApplicationRecord
   def one_choice 
     answer = choices.collect {|choice| choice.correct}.count(true)
     
-    if answer > 1
+    unless answer == 1
       errors.add(:choice, " should have only ONE correct answer but you have #{answer}")
     end
   end
