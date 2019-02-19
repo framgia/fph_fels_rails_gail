@@ -1,0 +1,36 @@
+<%= provide(:title, "Word List") %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-xl-12 mx-auto">
+            <div class="card card-signin flex-row my-5">
+                <div class="card-body">
+                    <h5 class="card-title"><%= @category.title %> | Word List<span class="float-right"><%= link_to "Add Word", new_admin_category_word_path,  class:"btn btn-info" %><%= link_to "Back", admin_categories_path,  class:"btn btn-defualt" %></span></h5>
+                    <table class="table table-sm">
+                    <thead>
+                        <tr class="d-flex">
+                            <th class="col-4">Word</th>
+                            <th class="col-5">Answer</th>
+                            <th class="col-3"><center>Action</center></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <% @words.each do |word| %>
+                        <tr class="d-flex">
+                            <td class="col-4"><%= word.content %></td>
+                            <td class="col-5"><%= word.correct_answer %></td>
+                            <td class="col-3">
+                                <center>
+                                    <%= link_to "Edit", edit_admin_category_word_path(@category,word), class: "btn btn-outline-warning btn-sm" %>
+                                    <%= link_to "Delete", admin_category_word_path(@category,word), method: :delete,  class:"btn btn-outline-danger btn-sm", data: { confirm: "You sure?" }  %>
+                                </center>
+                            </td>
+                        </tr>
+                        
+                    <% end %>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

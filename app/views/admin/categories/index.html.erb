@@ -4,25 +4,28 @@
         <div class="col-lg-12 col-xl-12 mx-auto">
             <div class="card card-signin flex-row my-5">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Category List<span class="float-right"><%= link_to "Add Category", new_admin_category_path,  class:"btn btn-info" %></span></h5>
-                    <%= will_paginate @categories %>
-                    <table class="table table-bordered">
+                    <h5 class="card-title">Category List<span class="float-right"><%= link_to "Add Category", new_admin_category_path,  class:"btn btn-info" %></span></h5>
+                    <table class="table table-sm">
                         <thead>
                             <tr class="d-flex">
-                                <th class="col-3">Title</th>
+                                <th class="col-2">Title</th>
                                 <th class="col-6">Description</th>
-                                <th class="col-3">Action</th>
+                                <th class="col-1"><center>Words</center></th>
+                                <th class="col-3"><center>Action</center></th>
                             </tr>
                         </thead>
                         <tbody>
                         <% @categories.each do |category| %>
                             <tr class="d-flex">
-                                <td class="col-3"><%= category.title %></td>
+                                <td class="col-2"><%= category.title %></td>
                                 <td class="col-6"><p id="description"><%= category.description %></p></td>
+                                <th class="col-1"><center> <%= link_to "#{category.words.count} View", admin_category_words_path(category), class: "btn btn-info btn-sm" %></center></th>
                                 <td class="col-3">
-                                    <button class="btn btn-primary btn-sm">Add Word</button>
-                                    <%= link_to "Edit", edit_admin_category_path(category), class: "btn btn-outline-warning btn-sm" %>
-                                    <%= link_to "Delete", [:admin, category], method: :delete,  class:"btn btn-outline-danger btn-sm", data: { confirm: "You sure?" }  %>
+                                    <center>
+                                        <%= link_to "Add Word", new_admin_category_word_path(category), class: "btn btn-primary btn-sm" %>
+                                        <%= link_to "Edit", edit_admin_category_path(category), class: "btn btn-outline-warning btn-sm" %>
+                                        <%= link_to "Delete", [:admin, category], method: :delete,  class:"btn btn-outline-danger btn-sm", data: { confirm: "You sure?" }  %>
+                                    </center>
                                 </td>
                             </tr>
                         <% end %>
