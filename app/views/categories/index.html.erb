@@ -1,0 +1,18 @@
+<%= provide(:title, "Category") %>
+<br><h1>Category List | <%= @categories.count %></h1><br>
+<div class="row">
+    <% @categories.each do |category| %>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><%= category.title %> | [<%= pluralize(category.words.count, "word") %>]</h5>
+                    <p class="card-text"><%= category.description %></p>    
+                    <a href="#" class="btn btn-info">Let's Learn!</a>
+                </div>
+            </div>
+        </div>
+    <% end %>   
+</div>
+<%= will_paginate @categories %> 
+
+
