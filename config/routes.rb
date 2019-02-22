@@ -15,6 +15,11 @@ Rails.application.routes.draw do
       resources :words 
     end
   end
+
+  resources :lessons do
+    resources :words ,controller: 'lessons/words'
+  end
+
   resources :categories
   resources :users 
   

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: one
+  lesson: one
+  choice: one
+
+two:
+  word: two
+  lesson: two
+  choice: two

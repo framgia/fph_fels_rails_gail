@@ -1,0 +1,28 @@
+<%= provide(:title, "Lesson") %>
+<br>
+<div class="row justify-content-center">
+    <div class="col-8">
+        <center>
+            <h2><%= @lesson.category.title %></h2>
+        <% @lesson.category.words.each do |word| %>
+            <div class="card">
+                <div class="card-header text-success"><h4><%= word.content %></h4></div>
+                <div class="card-body ">
+                <%= form_for(@answer,url:lesson_words_path(@lesson)) do |f| %>
+                    <ul class="list-unstyled text-center">
+                    <div class="btn-group-vertical" data-toggle="buttons-radio">
+                        <% word.choices.each do |choice| %>
+                            <li>
+                                <%= f.radio_button :choice_id, "#{choice.content}",name:"#{word.content}", id: "#{choice.id}", :style=>"display:none;"%>
+                                <%= f.label :choice_id,  id: "#{choice.id}", value: "#{choice.content}", class: "btn btn-outline-success" %>
+                            </li>
+                        <% end %>
+                    </div>
+                    <ul>
+                <% end %>
+                </div>
+            </div>
+        <% end %>
+        </center>
+    </div>
+</div>
