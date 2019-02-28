@@ -17,6 +17,7 @@ Category.create(title:"C+",
   description:
   "A basic programming language for you and for me and for the entire world")
 
+
 30.times do |n|
   name = Faker::Name.name
   email= "example-#{n+1}@rails.com"
@@ -27,8 +28,19 @@ Category.create(title:"C+",
   password_confirmation: password)
 end
 
-50.times do |n|
+20.times do |n|
   title = Faker::Name.unique.name
-  description = "A basic programming language for you and for me and for the entire world"
+  description =  "A basic programming language for you and for me and for the entire world"
   Category.create!(title: title,description: description)
+
+  10.times do
+    content = Faker::Lorem.word
+    word = Category.all.sample.words.build content: content
+    word.choices = [
+      Choice.new(content: content, correct: true),
+      Choice.new(content: Faker::Lorem.word, correct: false),
+      Choice.new(content: Faker::Lorem.word, correct: false)
+    ].shuffle
+    word.save!
+  end
 end

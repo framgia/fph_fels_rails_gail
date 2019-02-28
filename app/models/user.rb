@@ -8,6 +8,12 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+  has_many :lessons
+  has_many :categories, through: :lessons
+
+  def lesson_taken(category_id)
+    lesson = lessons.find_by(category_id:category_id)
+  end
 
   # Returns the hash digest of the given string.
   def self.digest(string)

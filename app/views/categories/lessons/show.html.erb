@@ -1,0 +1,42 @@
+<%= provide(:title, "Result") %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="card card-signin flex-row my-5">
+                <div class="card-body">
+                    <h5 class="card-title"><%= @lesson.category.title %><span class="float-right"> Score: <%= @lesson.score%> out of <%= @lesson.answers.count %></span></h5>
+                    <table class="table table-sm">
+                    <thead>
+                        <tr class="d-flex">
+                            <th class="col-3">Word</th>
+                            <th class="col-4">Your Answer</th>
+                            <th class="col-3">Correct Answer</th>
+                            <th class="col-2">LOL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <% @lesson.answers.each do |answer|%>
+                        <tr class="d-flex">
+                            <td class="col-3"><%= answer.word.content %></td>
+                            <td class="col-4"><%= answer.choice.content %></td>
+                            <td class="col-3"><%= answer.correct_answer %></td> 
+                            <td class="col-2">
+                            <% if answer.choice.correct == true %>
+                                <span style="font-size: 20px; color: #5cb85c;">
+                                    <i class="far fa-check-circle"></i>
+                                </span>
+                            <% else %>
+                                <span style="font-size: 20px; color:#d9534f;">
+                                    <i class="far fa-times-circle"></i>
+                                </span>
+                            <% end %>
+                            </td>    
+                        </tr>
+                    <% end %>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,17 +6,13 @@
 	  	</button>
 	  	<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav  ml-auto">
-			  	<li class="nav-item">
-					<%=  link_to "Home", root_path, class: "nav-link" %><span class="sr-only">(current)</span>
-			  	</li>
-			  	<li class="nav-item dropdown">
-					<%=  link_to "Categories","#", class: "nav-link dropdown-toggle", data:{ toggle: "dropdown"}, aria: {haspopup: "true", expanded: "false"} %>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<%= link_to "List Category", categories_path, class: "dropdown-item" %>
-						<%= link_to "Add Category", new_admin_category_path, class: "dropdown-item" %>
-					</div>
-				</li>   
 				<% if logged_in? %>
+					<li class="nav-item">
+						<%=  link_to "Dash Board", root_path, class: "nav-link" %><span class="sr-only">(current)</span>
+					</li>
+					<li class="nav-item">
+						<%=  link_to "Categories",categories_path, class: "nav-link"%>
+					</li>   
                     <li class="nav-item dropdown">
                         <%= link_to "Account", "#", class: "nav-link dropdown-toggle", data:{ toggle: "dropdown"}, aria: {haspopup: "true", expanded: "false"} %>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
