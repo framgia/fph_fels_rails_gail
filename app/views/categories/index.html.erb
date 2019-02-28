@@ -5,9 +5,9 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title"><%= category.title %> | [<%= pluralize(category.words.count, "word") %>]</h5>
-                    <p class="card-text"><%= category.description %></p>    
-                    <a href="#" class="btn btn-info">Let's Learn!</a>
+                    <h5 class="card-title"><center><%= category.title %> | [<%= pluralize(category.words.count, "word") %>]</center></h5>
+                    <p class="card-text"><%= category.description %></p>
+                    <%= link_to "Let's Learn!", new_category_lesson_path(category) , class: "btn btn-info btn-block" %>
                 </div>
             </div>
         </div>
