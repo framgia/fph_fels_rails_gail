@@ -2,35 +2,31 @@
 <br>
 <div class="row justify-content-center">
     <div class="col-8">
-            <h2 class="text-center"><%= @category.title %></h2>
-            <%= render 'shared/error_answer' %>
-        <%= form_for(@lesson, url: category_lessons_path(@category)) do |f| %>
-        <% @category.words.each do |word| %>
+        <h2 class="text-center"><%= @category.title %></h2>
+        <%= render 'shared/error_answer' %>
+        <%= form_for([@category, @lesson]) do |f| %>
+            <%= f.fields_for :answers do |p| %> 
             <div class="card">
                 <div class="card-header text-success">
-                    <h4 class="text-center"><%= word.content %></h4>
+                    <h4 class="text-center"><%= p.object.word.content %></h4>
                 </div>
-                <%= f.hidden_field :category_id, value: @category.id %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
                 <div class="card-body ">
-                    <%= f.fields_for :answers do |p| %> 
-                        <ul class="list-unstyled text-center">
-                            <fieldset id="<%= word.id %>" >
-                                <% word.choices.each do |choice| %>
-                                    <li class="mt-3">
-                                        <%= p.hidden_field :word_id , value: word.id %>
-                                        <div class="radio-toolbar">
-                                            <%= p.radio_button :choice_id, choice.id, id: "#{choice.id}"%>
-                                            <%= p.label choice.content, for: choice.id %>
-                                        </div>
-                                    </li>
-                                <% end %>
-                            </fieldset>
-                        <ul>
-                    <% end %>
+                    <ul class="list-unstyled text-center">
+                        <fieldset id="<%= p.object.word.id %>" >
+                            <% p.object.word.choices.each do |choice| %>
+                                <li class="mt-3">
+                                    <%= p.hidden_field :word_id%>
+                                    <div class="radio-toolbar">
+                                        <%= p.radio_button :choice_id, choice.id, id: "#{choice.id}"%>
+                                        <%= p.label choice.content, for: choice.id %>
+                                    </div>
+                                </li>
+                            <% end %>
+                        </fieldset>
+                    <ul>
                 </div>
             </div>
-        <% end %>
+            <% end %>
         <%= f.submit "Submit Answers", class: "btn btn-success btn-block btn-lg", id:"submit",disabled: true %>
         <% end %>
     </div>                           
