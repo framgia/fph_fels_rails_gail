@@ -10,11 +10,15 @@ class Categories::LessonsController < ApplicationController
     @category = Category.find(params[:category_id])
     @lesson = @category.lessons.build(lesson_params)
     @lesson.user_id = current_user.id
-     if @lesson.save
-      redirect_to categories_path
+    if @lesson.save
+      redirect_to category_lesson_path(@category,@lesson)
     else
       render 'new'
     end
+  end
+
+  def show 
+    @lesson = Lesson.find(params[:id])
   end
     
   private
