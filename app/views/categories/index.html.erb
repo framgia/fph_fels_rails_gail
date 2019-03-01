@@ -5,10 +5,10 @@
            <%= link_to "All", categories_path, class:"nav-link btn btn-outline-info " %>
         </li>
         <li class="nav-item nav-link" >
-            <%= link_to "Learned", "/categories?learned=1", class:"nav-link btn btn-outline-info" %>
+            <%= link_to "Learned", categories_path(learned:"1"), class:"nav-link btn btn-outline-info" %>
         </li>
         <li class="nav-item nav-link">
-            <%= link_to "Not Learned", "/categories?learned=0", class:"nav-link btn btn-outline-info" %>
+            <%= link_to "Not Learned", categories_path(learned:"0"), class:"nav-link btn btn-outline-info" %>
         </li>
     </ul>
     <h1>Category List | <%= @categories.count %></h1><br>
@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     <% lesson = @user.lesson_taken(category.id) %>
-                    <% if !lesson.nil? %>
+                    <% unless lesson.nil? %>
                         <div class="badge badge-secondary float-right">
                             Scored <%= "#{lesson.score} of #{lesson.answers.count}" %>
                         </div>
