@@ -1,9 +1,9 @@
 <% unless current_user?(@user) %>
-	<div id="follow_form_<%= @user.id %>" class="mt-2">
-		<% if current_user.following?(@user) %>
-			<%= render 'shared/unfollow'  %>
-		<% else %>
-			<%= render 'shared/follow'  %>
-		<% end %>
-	</div>
+    <div id="follow_form_<%= @user.id %>" class="mt-2">
+        % if current_user.following?(@user) %>
+            <%= render 'shared/unfollow'  %>
+        <% else %>
+            <%= render 'shared/follow'  %>
+        <% end %>
+    </div>
 <% end %>
