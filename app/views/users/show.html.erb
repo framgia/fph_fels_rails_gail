@@ -1,1 +1,27 @@
-<h1>Welcome <%= @user.name %>! </h1> 
+<%= provide(:title,"Profile") %>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <%= render 'shared/profile_pic' %>
+                    <b class="lead"><%= @user.name %></b><br>
+                    <%= render 'shared/follow_form'  if logged_in?%>
+                    <%= render 'shared/follow_status'%>
+                    <hr>
+                    <h5><%= @user.words_learned %></h5>
+                    <span><b>Words Learned</b></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="card bg-light">
+                <div class="card-header text-uppercase"><small><b>Activity Feed</b></small></div>
+                <div class="card-body"> 
+        
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

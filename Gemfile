@@ -22,6 +22,10 @@ gem 'will_paginate','3.1.6'
 gem 'will_paginate-bootstrap4'
 #adding fake data
 gem 'faker', '1.7.3'
+#imageupload
+gem 'carrierwave',             '1.2.2'
+gem 'mini_magick',             '4.7.0'
+
 #bootstrap related?
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Use SCSS for stylesheets

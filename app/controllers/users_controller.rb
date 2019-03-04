@@ -10,6 +10,25 @@ class UsersController < ApplicationController
     @user = User.new 
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params) 
+      flash[:success] = "Profile has been updated!" 
+      redirect_to user_url(@user)
+    else
+      render 'edit'
+    end 
+  end
+
+  def index 
+    #excludes the current user
+    @users = User.where.not(id:current_user.id).paginate(page: params[:page], per_page:10)
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -22,14 +41,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name,:email,:password,:password_confirmation)
+      params.require(:user).permit(:name,:email,:password,:password_confirmation,:picture)
     end  
-
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please Log in your account"
-        redirect_to login_url
-      end
-    end
 end
