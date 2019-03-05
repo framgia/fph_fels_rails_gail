@@ -6,6 +6,7 @@ class Lesson < ApplicationRecord
   validates_associated :answers
   has_many :choices, through: :answers
   before_create :correct_count
+  has_one :activity, as: :action, dependent: :destroy
 
   private
     def correct_count

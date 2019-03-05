@@ -8,4 +8,9 @@ class Category < ApplicationRecord
     def self.words_exist
        Category.where("EXISTS(SELECT 1 from words where categories.id = words.category_id)")
     end
+    
+    def lesson_score(user)
+        lesson = lessons.find_by(user_id: user.id)
+        "#{lesson.score} of #{lesson.answers.count} "
+    end
 end
