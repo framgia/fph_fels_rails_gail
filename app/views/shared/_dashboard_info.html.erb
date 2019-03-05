@@ -1,0 +1,5 @@
+<%= render 'shared/profile_pic' %>
+<b class="lead"><%= current_user.name %></b><br>
+<small><%= current_user.email %></small>
+<%= link_to "View Profile", user_path(current_user), class: "btn btn-info btn-block" %>
+<%= link_to "Update Profile", edit_user_path(current_user), class: "btn btn-outline-warning btn-block" %>
