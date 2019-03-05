@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   #navbar pages
  	get '/login', to: 'sessions#new'
   get '/signup', to: 'users#new'
+  get '/dashboard', to: 'static_pages#dashboard'  
 
   post '/signup', to: 'users#create'
   post '/login',   to: 'sessions#create'
@@ -26,5 +27,5 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships,only: [:create, :destroy]
-  
+  resources :words,only: [:index]
 end

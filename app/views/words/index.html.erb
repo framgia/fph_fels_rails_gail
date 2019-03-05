@@ -1,0 +1,52 @@
+<%= provide(:title, "Dashboard") %>
+<div class="container py-5"> 
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <%= render 'shared/dashboard_info' %>                    
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header">
+                    <small><b class="text-uppercase">Words Learned</b></small>
+                    <span class="float-right"><%= link_to raw("<small>Back to dashboard</small>"),dashboard_path %></span>
+                </div>
+                <div class="card-body">
+                    <%= form_tag words_path, method: :get do %>
+                        <div class="form-inline">
+                            <label class="mr-3" for="category">Category</label>
+                            <%= select_tag(:category,
+                                        options_from_collection_for_select(current_user.categories, 'id', 'title', params[:category]),
+                                        include_blank: "All learned",
+                                        class: 'form-control', onchange: "this.form.submit();") %>
+                        </div>
+                    <% end %>    
+                    <table class="table my-2">
+                        <tbody>
+                            <tr class="text-muted">
+                                <th>Word</th>
+                                <th>Your answer</th>
+                                <th>Correct answer</th>
+                            </tr>
+                            <% @answers.each do |answer|%>
+                                <tr>
+                                    <td><%= answer.word.content %></td>
+                                    <% if answer.choice.correct == true %>
+                                        <td class="text-success"><%= answer.choice.content %></td>
+                                        <td></td>
+                                    <% else %>
+                                        <td class="text-secondary"><%= answer.choice.content %></td>
+                                        <td class="text-success"><%= answer.correct_answer %></td>
+                                    <% end %>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

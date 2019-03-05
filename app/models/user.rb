@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   has_many :lessons
   has_many :categories, through: :lessons
+  has_many :answers, through: :lessons
   has_many :active_relationships,  class_name:  "Relationship",
   foreign_key: "follower_id",
   dependent:   :destroy
