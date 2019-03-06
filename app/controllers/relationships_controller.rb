@@ -4,7 +4,6 @@ class RelationshipsController < ApplicationController
   def create
     @user = User.find(params[:followed_id])
     current_user.follow(@user)
-    Activity.create(user: current_user, action: Relationship.last)
     respond_to do |format|
       format.html { redirect_to @user }
       format.js
