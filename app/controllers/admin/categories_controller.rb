@@ -33,8 +33,6 @@ class Admin::CategoriesController < ApplicationController
     end 
   end
 
-   
-
   def destroy 
     Category.find(params[:id]).destroy
     flash[:success] = "Category was Deleted!"
