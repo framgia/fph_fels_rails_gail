@@ -11,7 +11,7 @@
             <%= link_to "Not Learned", categories_path(learned:"0"), class:"nav-link btn btn-outline-info" %>
         </li>
     </ul>
-    <h1>Category List | <%= @categories.count %></h1><br>
+    <h1 class="display-4">Category List | <b><%= @categories.count %></b></h1><br>
     <div class="row">
     <% @categories.each do |category| %>
         <div class="col-sm-6">

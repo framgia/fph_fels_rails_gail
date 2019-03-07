@@ -7,15 +7,22 @@
                     <%= render 'shared/dashboard_info' %>
                     <%= render 'shared/follow_status' %>
                     <div class="row p-3 mt-2">
-                        <%= link_to raw("<h5>#{current_user.words_learned}</h5><span><b>Words Learned</b></span>"), words_path , class: "btn btn-info btn-block" %>
+                        <%= link_to raw("<h5>#{current_user.words_learned}</h5>
+                                        <span class='text-light'><b>Words Learned </b>
+                                        <i class='far fa-bookmark'></i></span>"),
+                                         words_path , class: "btn btn-info btn-block" %>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-8">
-            <div class="card bg-light">
+            <div class="card">
                 <div class="card-header text-uppercase"><small><b>Activity Feed</b></small></div>
                 <div class="card-body"> 
+                    <%= render 'shared/activity_post' %>
+                </div>
+                <div class="card-footer text-muted">
+                    <%= will_paginate @activities %> 
                 </div>
             </div>
         </div>

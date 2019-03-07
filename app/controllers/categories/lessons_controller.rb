@@ -1,5 +1,6 @@
 class Categories::LessonsController < ApplicationController
-
+  before_action :logged_in_user
+  
   def new
     @category = Category.find_by_id(params[:category_id])
     @lesson = Lesson.new

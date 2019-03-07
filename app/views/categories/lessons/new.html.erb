@@ -2,12 +2,12 @@
 <br>
 <div class="row justify-content-center">
     <div class="col-8">
-        <h2 class="text-center"><%= @category.title %></h2>
+        <h2 class="text-center text-secondary"><%= @category.title %></h2>
         <%= render 'shared/error_answer' %>
         <%= form_for([@category, @lesson]) do |f| %>
             <%= f.fields_for :answers do |p| %> 
             <div class="card">
-                <div class="card-header text-success">
+                <div class="card-header text-info">
                     <h4 class="text-center"><%= p.object.word.content %></h4>
                 </div>
                 <div class="card-body ">
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <% end %>
-        <%= f.submit "Submit Answers", class: "btn btn-success btn-block btn-lg", id:"submit",disabled: true %>
+        <%= f.submit "Submit Answers", class: "btn btn-info btn-block btn-lg", id:"submit",disabled: true %>
         <% end %>
     </div>                           
 </div>

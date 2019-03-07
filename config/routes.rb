@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories do
+  resources :categories, only: [:index] do
     resources :lessons, controller: 'categories/lessons' 
   end
 
@@ -26,6 +26,6 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :relationships,only: [:create, :destroy]
-  resources :words,only: [:index]
+  resources :relationships, only: [:create, :destroy]
+  resources :words, only: [:index]
 end

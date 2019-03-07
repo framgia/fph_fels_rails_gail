@@ -1,0 +1,30 @@
+<ul class="list-unstyled">
+    <% @activities.each do |activity| %>
+        <li class="media mb-3">
+            <% @user = activity.user %>
+            <% if current_user?(@user)%>
+                <%= render 'shared/feed_pic' %>
+            <% else %>
+                <%= render 'shared/feed_pic' %>
+            <% end %>
+            <div class="media-body">
+                <div class="mt-0 mb-1">
+                    <% if current_user?(@user)%>
+                        <b><%= link_to "You", user_path(@user), class: "text-secondary" %></b>
+                    <% else %>
+                        <b><%= link_to @user.name, user_path(@user), class: "text-secondary" %></b>
+                    <% end %>
+
+                    <% if activity.action.is_a? Relationship %>
+                        followed <%= link_to activity.other_user.name,user_path(activity.other_user),class:"badge badge-secondary" %> 
+                    <% else %>
+                        learned
+                        <%= activity.lesson_score %> 
+                        <%= link_to activity.categ_title, category_lesson_path(activity.action.category,activity.action),class:"badge badge-info" %> 
+                    <% end %> 
+                 </div>
+                <%= time_ago_in_words(activity.created_at) %> ago.
+            </div>
+        </li>
+    <% end %>
+</ul>

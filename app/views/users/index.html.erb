@@ -1,5 +1,6 @@
 <%= provide(:title, "Members") %>
-<center><h1 class="display-4">Follow them now!</h1></center><br>
+<div class="container py-3">
+    <h1 class="display-4 text-center">Follow them now!</h1><br>
     <div class="row">
         <% @users.each do |user| %>
             <% @user = user %>
@@ -21,4 +22,5 @@
             </div>
         <% end %>
     </div>
-<%= will_paginate @users %> 
+    <%= will_paginate @users %> 
+</div>
