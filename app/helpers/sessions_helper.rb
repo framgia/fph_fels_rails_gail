@@ -66,4 +66,12 @@ module SessionsHelper
     end
   end
   
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(dashboard_url) unless @user == current_user
+  end
+
+  def is_admin
+    redirect_to(dashboard_url) unless current_user.admin?
+  end   
 end

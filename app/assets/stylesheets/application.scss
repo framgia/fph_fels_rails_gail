@@ -37,7 +37,7 @@
 }
   
 body {
-  background: linear-gradient(to right,#B2D0B4	, #F0FFF0);
+  background: linear-gradient(to right,rgb(220, 233, 221)	, #F0FFF0);
   margin-bottom: 10px;
 }
   
@@ -166,17 +166,17 @@ body {
     padding: 5px 20px;
     font-family:Arial;
     font-size:20px;
-    border: 1px solid #5cb85c;
+    border: 1px solid #919b9b;
     border-radius: 4px;  
-    color: #5cb85c;  
+    color: #919b9b;  
     &:hover {
-      background-color: #5cb85c;
+      background-color:#919b9b;
       color: #f7f7f7;
     }
   }
   
   input[type="radio"]:checked + label { 
-    background-color: #5cb85c;
+    background-color:#919b9b;
     color: #f7f7f7;
   }
 }

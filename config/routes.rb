@@ -12,20 +12,20 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   
   namespace :admin do
-    resources :categories do 
-      resources :words 
+    resources :categories, except: [:show] do 
+      resources :words, except: [:show]
     end
   end
 
-  resources :categories do
-    resources :lessons, controller: 'categories/lessons' 
+  resources :categories, only: [:index] do
+    resources :lessons, only: [:new, :create, :show], controller: 'categories/lessons' 
   end
 
-  resources :users do
+  resources :users, except: [:destroy] do
     member do
       get :following, :followers
     end
   end
-  resources :relationships,only: [:create, :destroy]
-  resources :words,only: [:index]
+  resources :relationships, only: [:create, :destroy]
+  resources :words, only: [:index]
 end

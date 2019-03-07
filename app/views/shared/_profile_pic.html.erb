@@ -1,5 +1,5 @@
 <% if @user.picture? %>
     <center><%=image_tag @user.picture.url, size:"100x100",class: "rounded-pill" %><br></center>
 <% else %>
-    <center><span style="font-size: 70px; color:#d9534f;" ><i class="fab fa-gitlab"></i></span></center>
+    <center><span style="font-size: 70px; color:#d9534f;" ><i class="fas fa-user-circle"></i></span></center>
 <% end %>
