@@ -11,8 +11,8 @@ class Admin::WordsController < ApplicationController
     @word = Word.new(category_id: params[:category_id]) 
     3.times do  
       @word.choices.build 
-      end  
-    end
+    end  
+  end
 
   def create 
     @category = Category.find(params[:category_id])
@@ -38,7 +38,7 @@ class Admin::WordsController < ApplicationController
       redirect_to admin_category_words_url(@word.category_id)
     else
       render 'edit'
-      end 
+    end 
   end
 
   def destroy
@@ -50,7 +50,5 @@ class Admin::WordsController < ApplicationController
   private 
     def word_params
         params.require(:word).permit(:content, choices_attributes:[:id,:content, :correct])
-    end 
-
-    
+    end   
 end
