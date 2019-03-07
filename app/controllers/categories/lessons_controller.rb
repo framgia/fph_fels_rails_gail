@@ -11,7 +11,10 @@ class Categories::LessonsController < ApplicationController
     @lesson = @category.lessons.build(lesson_params)
     @lesson.user_id = current_user.id
     if @lesson.save
-      redirect_to category_lesson_path(@category,@lesson)
+      activity = @lesson.create_activity(user: current_user)
+      if activity.save
+        redirect_to category_lesson_path(@category,@lesson)
+      end
     else
       render 'new'
     end

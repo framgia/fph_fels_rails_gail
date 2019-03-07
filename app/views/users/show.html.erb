@@ -18,8 +18,29 @@
             <div class="card bg-light">
                 <div class="card-header text-uppercase"><small><b>Activity Feed</b></small></div>
                 <div class="card-body"> 
-        
+                    <ul class="list-unstyled">
+                        <% @activities.each do |activity| %>
+                            <li class="media mb-3">
+                                <%= render 'shared/feed_pic' %>
+                                <div class="media-body">
+                                    <div class="mt-0 mb-1">
+                                        <b class="text-secondary">You</b>         
+                                        <% if activity.action.is_a? Relationship %>
+                                            followed <%= link_to activity.other_user.name,user_path(activity.other_user),class:"badge badge-success" %> 
+                                        <% else %>
+                                            learned
+                                            <%= activity.lesson_score %> 
+                                            <%= link_to activity.categ_title, category_lesson_path(activity.action.category,activity.action),class:"badge badge-info" %> 
+                                        <% end %> 
+                                    </div>
+                                    <%= time_ago_in_words(activity.created_at) %> ago.
+                                </div>
+                            </li>
+                        <% end %>
+                    </ul>
                 </div>
+                <div class="card-footer text-muted">
+                    <%= will_paginate @activities %> 
                 </div>
             </div>
         </div>
