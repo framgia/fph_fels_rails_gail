@@ -3,13 +3,12 @@ class WordsController < ApplicationController
   
   def index
     @user = User.find(current_user.id)
-    @answers = @user.answers.paginate(page: params[:page], per_page:10)
+    @answers = @user.answers
 
     if params[:category].present?
-      @answers = @user.answers.where("lessons.category_id = ?", params[:category]).paginate(page: params[:page], per_page:10)
-    else
-      @answers.paginate(page: params[:page], per_page:10)
+      @answers = @user.answers.where("lessons.category_id = ?", params[:category])
     end
 
+    @answers =  @answers.paginate(page: params[:page], per_page:10)
   end
 end
