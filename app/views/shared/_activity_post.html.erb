@@ -21,7 +21,11 @@
                         learned
                         <%= activity.lesson_score %> 
                         <%= link_to activity.categ_title, category_lesson_path(activity.action.category,activity.action),class:"badge badge-info" %> 
-                    <% end %> 
+                    <% end %>
+            
+                        <% @activity = activity%>
+                        <%= render partial: 'shared/vote_form', locals: {activity: @activity} %>
+            
                  </div>
                 <%= time_ago_in_words(activity.created_at) %> ago.
             </div>

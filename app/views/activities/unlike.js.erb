@@ -1,0 +1,2 @@
+$("#vote_form_<%= @activity.id %>").html("<%= escape_javascript(render('shared/vote')) %>");
+$("#vote_count").html('<%= @activity.get_likes.size %>');

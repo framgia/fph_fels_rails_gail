@@ -1,0 +1,7 @@
+<span id="vote_form_<%= @activity.id %>">
+    <% if current_user.liked?(@activity) %>
+        <%= render 'shared/unvote' %>
+    <% else %>
+       <%= render 'shared/vote' %>
+    <% end %>
+</span>

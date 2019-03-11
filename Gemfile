@@ -17,6 +17,8 @@ gem 'bcrypt','3.1.12'
 #bootstrap
 gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
+#voting
+gem 'acts_as_votable', '~> 0.12.0'
 #pagination
 gem 'will_paginate','3.1.6'
 gem 'will_paginate-bootstrap4'
@@ -52,10 +54,15 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'mysql2', '>= 0.3.18', '< 0.6.0'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+end
+
+group :production do 
+  gem 'pg'
 end
 
 group :development do

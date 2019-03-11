@@ -1,0 +1,6 @@
+<%= link_to like_activity_path(@activity), method: :put , remote: true do %>
+    <span class='text-muted float-right'>
+        <small class="text-muted pr-1" id="vote_count"><%= @activity.get_likes.size %></small>
+        <i class='far fa-heart'></i>
+    </span>
+<% end %>
