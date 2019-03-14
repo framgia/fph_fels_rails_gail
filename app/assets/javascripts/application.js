@@ -17,11 +17,15 @@
 //= require popper
 //= require bootstrap-sprockets
 
-$( document ).ready(function() {
+$( document ).on('ready turbolinks:load',function() {
     $('#password, #confirm_password').on('keyup', function () {
         if($('#password').val() == $('#confirm_password').val()) {
             $('#message').html('Matching').css('color', 'green');
-        }else 
+            $('#create_acc').not(this).prop('disabled', false);  
+        }else{
             $('#message').html('Not Matching').css('color', 'red');
+            $('#create_acc').not(this).prop('disabled', true);  
+        }
     });
 });
+

@@ -7,9 +7,8 @@ class WordsController < ApplicationController
 
     if params[:category].present?
       @answers = @user.answers.where("lessons.category_id = ?", params[:category])
-    else
-      @answers
     end
 
+    @answers =  @answers.paginate(page: params[:page], per_page:10)
   end
 end

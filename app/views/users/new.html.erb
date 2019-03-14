@@ -30,7 +30,7 @@
                             <span id='message'></span>
                         </div>
 
-                        <%= f.submit "Create Account", class: "btn btn-lg btn-primary btn-block text-uppercase" %>      
+                        <%= f.submit "Create Account", id: "create_acc", disabled: true, class: "btn btn-lg btn-info btn-block text-uppercase" %>      
                         <hr class="my-4">
                         <center><%= link_to "Have an Account?", login_path, class: "text-center" %><center>
                     <% end %>
